@@ -1,0 +1,11 @@
+//Eliminar Flete
+router.delete('/api/deleteFreight',(req, res) => {
+    var id = req.body.id;
+	var idType = req.body.idType;
+	let sql = "CALL spDeleteFreight (" + id + "," + idType + ");"
+    let query = conn.query(sql, (err, results) => {
+      if(err) throw err;
+      res.send(JSON.stringify(results));
+	  console.log("/api/deleteFreight");
+    });
+  });
